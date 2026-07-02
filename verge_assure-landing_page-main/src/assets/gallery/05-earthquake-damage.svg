@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 267">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c0700"/>
+      <stop offset="100%" stop-color="#261400"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="267" fill="url(#bg)"/>
+  <!-- Building structure (cracked) -->
+  <rect x="100" y="80" width="200" height="140" fill="#1a0e00" stroke="#3a2000" stroke-width="1.5"/>
+  <!-- Windows -->
+  <rect x="118" y="100" width="34" height="28" fill="#100800" rx="1"/>
+  <rect x="168" y="100" width="34" height="28" fill="#100800" rx="1"/>
+  <rect x="248" y="100" width="34" height="28" fill="#100800" rx="1"/>
+  <rect x="118" y="148" width="34" height="28" fill="#100800" rx="1"/>
+  <rect x="248" y="148" width="34" height="28" fill="#100800" rx="1"/>
+  <!-- Cracks on building -->
+  <path d="M200,80 L188,105 L198,112 L184,140 L196,148 L180,178 L200,180 L196,220"
+        fill="none" stroke="#4a2800" stroke-width="2" stroke-linecap="round"/>
+  <path d="M188,105 L172,98" fill="none" stroke="#3a2000" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M198,112 L218,108" fill="none" stroke="#3a2000" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M184,140 L166,138" fill="none" stroke="#3a2000" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Ground crack -->
+  <path d="M0,220 L60,218 L80,225 L120,216 L150,222 L180,215 L200,220 L230,214 L270,222 L310,216 L340,224 L400,218"
+        fill="none" stroke="#4a2800" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M200,220 L196,267" fill="none" stroke="#3a1800" stroke-width="3" stroke-linecap="round"/>
+  <path d="M200,220 L195,240 L205,252 L198,267" fill="none" stroke="#4a2400" stroke-width="2" stroke-linecap="round"/>
+  <!-- Rubble -->
+  <polygon points="40,225 55,215 70,222 60,232" fill="#2a1400" opacity="0.8"/>
+  <polygon points="330,218 348,210 360,220 348,228" fill="#2a1400" opacity="0.8"/>
+  <polygon points="160,230 175,222 188,232 172,238" fill="#221000" opacity="0.7"/>
+  <!-- Label -->
+  <rect y="240" width="400" height="27" fill="rgba(0,0,0,0.45)"/>
+  <text x="16" y="258" font-family="system-ui,sans-serif" font-size="10" font-weight="700" letter-spacing="2.5" fill="rgba(255,255,255,0.88)">EARTHQUAKE DAMAGE</text>
+  <text x="384" y="13" font-family="system-ui,sans-serif" font-size="9" text-anchor="end" fill="rgba(255,255,255,0.28)">replace with photo</text>
+</svg>

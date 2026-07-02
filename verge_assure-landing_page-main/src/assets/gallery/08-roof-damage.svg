@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 267 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080c08"/>
+      <stop offset="100%" stop-color="#161e16"/>
+    </linearGradient>
+  </defs>
+  <rect width="267" height="400" fill="url(#bg)"/>
+  <!-- Sky/background -->
+  <rect width="267" height="180" fill="#0a0e14"/>
+  <!-- Roof left pitch -->
+  <polygon points="0,230 134,60 267,230" fill="#141c14" stroke="#243020" stroke-width="1.5"/>
+  <!-- Tile rows (intact sections) -->
+  <g fill="none" stroke="#1e2a1e" stroke-width="1" opacity="0.7">
+    <!-- Row 1 from ridge -->
+    <rect x="90" y="100" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="122" y="100" width="30" height="18" rx="1" fill="#182018"/>
+    <!-- Row 2 -->
+    <rect x="68" y="120" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="100" y="120" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="132" y="120" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="164" y="120" width="30" height="18" rx="1" fill="#182018"/>
+    <!-- Row 3 (missing some) -->
+    <rect x="48" y="140" width="30" height="18" rx="1" fill="#182018"/>
+    <!-- gap at 80-112 (MISSING) -->
+    <rect x="112" y="140" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="144" y="140" width="30" height="18" rx="1" fill="#182018"/>
+    <!-- gap at 176-208 (MISSING) -->
+    <rect x="208" y="140" width="30" height="18" rx="1" fill="#182018"/>
+    <!-- Row 4 -->
+    <rect x="30" y="160" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="62" y="160" width="30" height="18" rx="1" fill="#182018"/>
+    <!-- gap at 94 -->
+    <rect x="126" y="160" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="158" y="160" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="190" y="160" width="30" height="18" rx="1" fill="#182018"/>
+    <!-- Row 5 -->
+    <rect x="12" y="180" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="44" y="180" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="76" y="180" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="108" y="180" width="30" height="18" rx="1" fill="#182018"/>
+    <!-- gap at 140 -->
+    <rect x="172" y="180" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="204" y="180" width="30" height="18" rx="1" fill="#182018"/>
+    <rect x="236" y="180" width="28" height="18" rx="1" fill="#182018"/>
+  </g>
+  <!-- Exposed underlayer (visible at gaps) -->
+  <rect x="80" y="140" width="32" height="18" fill="#242c20" opacity="0.6" rx="1"/>
+  <rect x="176" y="140" width="32" height="18" fill="#242c20" opacity="0.6" rx="1"/>
+  <rect x="94" y="160" width="32" height="18" fill="#242c20" opacity="0.6" rx="1"/>
+  <rect x="140" y="180" width="32" height="18" fill="#242c20" opacity="0.6" rx="1"/>
+  <!-- Broken tile fragments (scattered) -->
+  <polygon points="88,138 98,142 94,150 84,148" fill="#1e2a1e" opacity="0.8"/>
+  <polygon points="178,138 190,136 185,146 175,144" fill="#1e2a1e" opacity="0.8"/>
+  <!-- Ridge -->
+  <rect x="100" y="58" width="68" height="8" rx="2" fill="#1e2a1e" stroke="#283a26" stroke-width="1"/>
+  <!-- Label -->
+  <rect y="373" width="267" height="27" fill="rgba(0,0,0,0.45)"/>
+  <text x="16" y="391" font-family="system-ui,sans-serif" font-size="10" font-weight="700" letter-spacing="2.5" fill="rgba(255,255,255,0.88)">ROOF DAMAGE</text>
+  <text x="251" y="13" font-family="system-ui,sans-serif" font-size="9" text-anchor="end" fill="rgba(255,255,255,0.28)">replace with photo</text>
+</svg>

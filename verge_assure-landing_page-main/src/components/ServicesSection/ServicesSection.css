@@ -1,0 +1,283 @@
+/* ── Services Section — Sui-inspired Timeline ─────────────────────── */
+.svc-wrapper {
+  height: 300vh;
+  background: transparent;
+}
+
+.svc-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 7vw;
+  overflow: hidden;
+}
+
+/* ── Heading ────────────────────────────────────────────────────────── */
+.svc-heading {
+  padding-top: 80px;
+  flex-shrink: 0;
+  margin-bottom: 32px;
+}
+
+.svc-label {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(var(--c-label-rgb), 0.7);
+  margin-bottom: 14px;
+}
+
+.svc-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 5.5vw, 80px);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--c-white);
+  margin: 0 0 18px;
+}
+
+.svc-subtitle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.svc-subtitle-accent {
+  width: 11px;
+  height: 11px;
+  background: var(--c-accent);
+  flex-shrink: 0;
+}
+
+.svc-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(13px, 1.2vw, 17px);
+  font-weight: 500;
+  color: rgba(var(--c-white-rgb), 0.40);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Timeline Layout ─────────────────────────────────────────────────── */
+.svc-timeline {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  min-height: 0;
+  padding-bottom: 40px;
+  gap: 0;
+}
+
+.svc-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.svc-col--left {
+  justify-content: center;
+}
+
+.svc-col--right {
+  justify-content: space-between;
+}
+
+/* ── Center Progress Line ────────────────────────────────────────────── */
+.svc-line-wrap {
+  width: 36px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.svc-line-svg {
+  width: 2px;
+  height: 100%;
+  display: block;
+}
+
+.svc-cursor {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px;
+  height: 9px;
+  background: var(--c-accent);
+  box-shadow: 0 0 0 3px rgba(var(--c-accent-rgb), 0.18), 0 0 14px rgba(var(--c-accent-rgb), 0.55);
+  transition: top 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+/* ── Card ──────────────────────────────────────────────────────────────── */
+.svc-card {
+  position: relative;
+  border: 1px solid rgba(var(--c-white-rgb), 0.08);
+  background: var(--c-bg-card);
+  transition: border-color 0.45s ease;
+}
+
+.svc-card--active {
+  border-color: rgba(var(--c-accent-rgb), 0.22);
+  box-shadow: 0 0 0 1px rgba(var(--c-accent-rgb), 0.06);
+}
+
+/* ── Card top row ────────────────────────────────────────────────────── */
+.svc-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  position: relative;
+}
+
+.svc-card-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(var(--c-white-rgb), 0.22);
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(var(--c-white-rgb), 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.svc-card--active .svc-card-num {
+  color: rgba(var(--c-accent-rgb), 0.80);
+  border-color: rgba(var(--c-accent-rgb), 0.28);
+}
+
+.svc-card-category {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--c-white-rgb), 0.28);
+  flex: 1;
+  transition: color 0.4s ease;
+}
+
+.svc-card--active .svc-card-category {
+  color: rgba(var(--c-white-rgb), 0.70);
+}
+
+/* Corner registration mark */
+.svc-corner-mark {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 5px;
+  height: 5px;
+  background: rgba(var(--c-white-rgb), 0.07);
+}
+
+/* ── Expandable body ─────────────────────────────────────────────────── */
+.svc-card-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svc-card--active .svc-card-body {
+  max-height: 240px;
+}
+
+/* ── Card footer ─────────────────────────────────────────────────────── */
+.svc-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-top: 0px solid transparent;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+
+.svc-card-foot--active {
+  border-top: 1px solid rgba(var(--c-white-rgb), 0.07);
+}
+
+.svc-card-foot-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.svc-va-badge {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  font-weight: 900;
+  color: var(--c-accent);
+  letter-spacing: 0.10em;
+  background: rgba(var(--c-accent-rgb), 0.09);
+  border: 1px solid rgba(var(--c-accent-rgb), 0.22);
+  padding: 3px 7px;
+  border-radius: 3px;
+}
+
+.svc-card-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(var(--c-accent-rgb), 0.55);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.svc-card-link:hover {
+  color: var(--c-accent);
+  gap: 10px;
+}
+
+.svc-card-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.svc-card-link:hover .svc-card-arrow {
+  transform: translateX(2px);
+}
+
+/* Card Body text container */
+.svc-card-body--text {
+  padding: 16px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.svc-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 850;
+  color: var(--c-white);
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.svc-card-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgba(var(--c-white-rgb), 0.55);
+  margin: 0;
+}

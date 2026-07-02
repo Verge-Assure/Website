@@ -1,0 +1,107 @@
+/* ── Stats Section ─────────────────────────────────────────────── */
+.ss-wrapper {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 7vw;
+  background: transparent;
+}
+
+/* ── Left column — sticky ────────────────────────────────────────── */
+.ss-left {
+  flex: 0 0 38%;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 8%;
+}
+
+.ss-label {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(var(--c-label-rgb), 0.7);
+  margin-bottom: 28px;
+}
+
+.ss-heading {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(42px, 5.5vw, 78px);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--c-white);
+  margin-bottom: 20px;
+}
+
+.ss-subtext {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(14px, 1.3vw, 18px);
+  font-weight: 500;
+  color: rgba(var(--c-white-rgb), 0.35);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* ── Right column — scrollable stats ────────────────────────────── */
+.ss-right {
+  flex: 1;
+  padding: 12vh 0 20vh;
+}
+
+.ss-item {
+  padding: 52px 0;
+  border-top: 1px solid rgba(var(--c-white-rgb), 0.07);
+  position: relative;
+  --progress: 0;
+  --progress-half: 0;
+}
+
+.ss-item:last-child {
+  border-bottom: 1px solid rgba(var(--c-white-rgb), 0.07);
+}
+
+/* ── Number ──────────────────────────────────────────────────────── */
+.ss-number {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(56px, 7.5vw, 104px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--c-white);
+  opacity: calc(0.1 + var(--progress-half) * 0.9);
+  transform: translateY(calc((1 - var(--progress-half)) * 24px));
+  will-change: transform, opacity;
+}
+
+/* ── Description ─────────────────────────────────────────────────── */
+.ss-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(15px, 1.5vw, 20px);
+  font-weight: 500;
+  color: rgba(var(--c-white-rgb), 0.45);
+  line-height: 1.55;
+  margin-top: 14px;
+  max-width: 520px;
+  opacity: calc(var(--progress) * 0.72);
+  transform: translateY(calc((1 - var(--progress)) * 14px));
+  will-change: transform, opacity;
+}
+
+/* ── Expanding accent underline ──────────────────────────────────── */
+.ss-underline {
+  margin-top: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--c-accent), rgba(var(--c-accent-rgb), 0.1));
+  transform-origin: left center;
+  transform: scaleX(var(--progress-half));
+  will-change: transform;
+}

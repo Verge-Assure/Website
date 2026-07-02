@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 267 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#120200"/>
+      <stop offset="100%" stop-color="#7a1a00"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#f05800"/>
+      <stop offset="60%" stop-color="#ff8c00" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffe066" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="267" height="400" fill="url(#bg)"/>
+  <!-- Building -->
+  <rect x="54" y="180" width="160" height="160" fill="#200500" stroke="#4a0a00" stroke-width="1.5"/>
+  <rect x="70" y="196" width="40" height="44" fill="#160200"/>
+  <rect x="130" y="196" width="40" height="44" fill="#160200"/>
+  <rect x="70" y="260" width="40" height="44" fill="#160200"/>
+  <rect x="130" y="260" width="40" height="44" fill="#160200"/>
+  <rect x="103" y="310" width="30" height="30" fill="#0e0100"/>
+  <!-- Roof -->
+  <polygon points="44,182 134,130 224,182" fill="#1a0400" stroke="#3a0800" stroke-width="1.5"/>
+  <!-- Flames -->
+  <path d="M80,180 Q68,148 82,120 Q88,138 96,118 Q108,90 100,68 Q118,88 114,110 Q130,76 122,48 Q148,72 140,100 Q158,72 152,50 Q172,80 162,110 Q174,88 180,66 Q188,96 176,118 Q186,100 194,110 Q186,140 180,180Z" fill="url(#flame)" opacity="0.9"/>
+  <!-- Smoke -->
+  <ellipse cx="110" cy="48" rx="28" ry="18" fill="#1a0800" opacity="0.55"/>
+  <ellipse cx="148" cy="36" rx="20" ry="14" fill="#200c00" opacity="0.4"/>
+  <ellipse cx="128" cy="24" rx="16" ry="10" fill="#1a0800" opacity="0.3"/>
+  <!-- Label -->
+  <rect y="373" width="267" height="27" fill="rgba(0,0,0,0.45)"/>
+  <text x="16" y="391" font-family="system-ui,sans-serif" font-size="10" font-weight="700" letter-spacing="2.5" fill="rgba(255,255,255,0.88)">FIRE DAMAGE</text>
+  <text x="251" y="13" font-family="system-ui,sans-serif" font-size="9" text-anchor="end" fill="rgba(255,255,255,0.28)">replace with photo</text>
+</svg>

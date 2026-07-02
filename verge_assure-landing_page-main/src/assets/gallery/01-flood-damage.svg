@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 267">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#071828"/>
+      <stop offset="100%" stop-color="#0d3a5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="267" fill="url(#bg)"/>
+  <!-- House silhouette -->
+  <polygon points="155,165 155,135 185,112 200,98 215,112 245,135 245,165"
+           fill="#0a2040" stroke="#1a4070" stroke-width="1.5"/>
+  <rect x="175" y="135" width="19" height="15" fill="#0c2848" rx="1"/>
+  <rect x="206" y="135" width="19" height="15" fill="#0c2848" rx="1"/>
+  <rect x="192" y="148" width="16" height="17" fill="#060e20"/>
+  <!-- Flood water -->
+  <path d="M0,183 Q50,174 100,183 Q150,192 200,183 Q250,174 300,183 Q350,192 400,183 L400,267 L0,267Z" fill="#124a8c"/>
+  <path d="M0,198 Q60,190 120,198 Q180,206 240,198 Q300,190 360,198 L400,198 L400,267 L0,267Z" fill="#1660aa"/>
+  <path d="M0,213 Q40,206 80,213 Q120,220 160,213 Q200,206 240,213 Q280,220 320,213 Q360,206 400,213 L400,267 L0,267Z" fill="#1e7cc8" opacity="0.75"/>
+  <!-- Label -->
+  <rect y="240" width="400" height="27" fill="rgba(0,0,0,0.45)"/>
+  <text x="16" y="258" font-family="system-ui,sans-serif" font-size="10" font-weight="700" letter-spacing="2.5" fill="rgba(255,255,255,0.88)">FLOOD DAMAGE</text>
+  <text x="384" y="13" font-family="system-ui,sans-serif" font-size="9" text-anchor="end" fill="rgba(255,255,255,0.28)">replace with photo</text>
+</svg>

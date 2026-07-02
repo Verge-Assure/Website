@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 267 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#060e18"/>
+      <stop offset="100%" stop-color="#102030"/>
+    </linearGradient>
+  </defs>
+  <rect width="267" height="400" fill="url(#bg)"/>
+  <!-- Falling hailstones (background) -->
+  <g fill="#1a3a58" opacity="0.5">
+    <ellipse cx="30" cy="40" rx="5" ry="5"/>
+    <ellipse cx="80" cy="20" rx="4" ry="4"/>
+    <ellipse cx="140" cy="55" rx="6" ry="6"/>
+    <ellipse cx="200" cy="30" rx="4" ry="4"/>
+    <ellipse cx="240" cy="60" rx="5" ry="5"/>
+    <ellipse cx="55" cy="90" rx="3" ry="3"/>
+    <ellipse cx="170" cy="80" rx="5" ry="5"/>
+    <ellipse cx="220" cy="100" rx="3" ry="3"/>
+  </g>
+  <!-- Car roof surface -->
+  <path d="M20,180 Q30,160 80,158 L190,158 Q230,160 248,180 L248,260 Q234,268 134,270 Q40,268 20,260Z"
+        fill="#141c28" stroke="#243040" stroke-width="1.5"/>
+  <!-- Windshield crack -->
+  <path d="M70,158 Q80,130 134,125 Q188,130 200,158Z" fill="#0e1620" stroke="#1e2a38" stroke-width="1"/>
+  <path d="M120,140 L108,155" stroke="#2a3848" stroke-width="1" stroke-linecap="round"/>
+  <path d="M108,155 L98,152" stroke="#2a3848" stroke-width="1" stroke-linecap="round"/>
+  <!-- Hail dents on roof -->
+  <g opacity="0.85">
+    <circle cx="60" cy="190" r="10" fill="none" stroke="#1e3050" stroke-width="2"/>
+    <circle cx="60" cy="190" r="4" fill="#1a2840"/>
+    <circle cx="100" cy="200" r="8" fill="none" stroke="#1e3050" stroke-width="2"/>
+    <circle cx="100" cy="200" r="3" fill="#1a2840"/>
+    <circle cx="140" cy="185" r="11" fill="none" stroke="#1e3050" stroke-width="2"/>
+    <circle cx="140" cy="185" r="4.5" fill="#1a2840"/>
+    <circle cx="185" cy="195" r="9" fill="none" stroke="#1e3050" stroke-width="2"/>
+    <circle cx="185" cy="195" r="3.5" fill="#1a2840"/>
+    <circle cx="75" cy="230" r="8" fill="none" stroke="#1e3050" stroke-width="2"/>
+    <circle cx="75" cy="230" r="3" fill="#1a2840"/>
+    <circle cx="120" cy="240" r="10" fill="none" stroke="#1e3050" stroke-width="2"/>
+    <circle cx="120" cy="240" r="4" fill="#1a2840"/>
+    <circle cx="165" cy="228" r="7" fill="none" stroke="#1e3050" stroke-width="2"/>
+    <circle cx="165" cy="228" r="3" fill="#1a2840"/>
+    <circle cx="215" cy="210" r="9" fill="none" stroke="#1e3050" stroke-width="2"/>
+    <circle cx="215" cy="210" r="3.5" fill="#1a2840"/>
+  </g>
+  <!-- Falling hailstones (foreground, larger) -->
+  <g fill="#2a4a6a" opacity="0.7">
+    <ellipse cx="45" cy="130" rx="7" ry="7"/>
+    <ellipse cx="160" cy="115" rx="8" ry="8"/>
+    <ellipse cx="230" cy="140" rx="6" ry="6"/>
+    <ellipse cx="95" cy="148" rx="5" ry="5"/>
+  </g>
+  <!-- Label -->
+  <rect y="373" width="267" height="27" fill="rgba(0,0,0,0.45)"/>
+  <text x="16" y="391" font-family="system-ui,sans-serif" font-size="10" font-weight="700" letter-spacing="2.5" fill="rgba(255,255,255,0.88)">HAIL DAMAGE</text>
+  <text x="251" y="13" font-family="system-ui,sans-serif" font-size="9" text-anchor="end" fill="rgba(255,255,255,0.28)">replace with photo</text>
+</svg>

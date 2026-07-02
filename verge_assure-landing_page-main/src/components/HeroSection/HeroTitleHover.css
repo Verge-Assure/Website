@@ -1,0 +1,58 @@
+/* ── Hero title hover reveal ──────────────────────────────────
+   Only loaded when VITE_HERO_TITLE_HOVER=true.
+   Overrides the base .hero-title so the element is interactive.
+────────────────────────────────────────────────────────────── */
+.hero-title {
+  pointer-events: auto;
+  cursor: default;
+}
+
+.title-line-wrapper {
+  display: grid;
+  overflow: hidden;
+}
+
+/* Both stacked in the same grid cell; wrapper auto-sizes to widest child */
+.title-line {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1),
+              opacity   0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.title-line--default {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.title-line--alt {
+  transform: translateY(105%);
+  opacity: 0;
+}
+
+.title-line--delay  { transition-delay: 0.07s; }
+.title-line--delay2 { transition-delay: 0.14s; }
+
+/* Third line: collapsed by default, expands on hover */
+.title-line-wrapper--expand {
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.title-line-wrapper--expand > .title-line {
+  min-height: 0;
+}
+
+/* ── Hover states ───────────────────────────────────────────── */
+.hero-title:hover .title-line--default {
+  transform: translateY(-105%);
+  opacity: 0;
+}
+
+.hero-title:hover .title-line--alt {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero-title:hover .title-line-wrapper--expand {
+  grid-template-rows: 1fr;
+}

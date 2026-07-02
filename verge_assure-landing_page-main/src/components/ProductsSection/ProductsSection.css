@@ -1,0 +1,158 @@
+/* ── Products Section ────────────────────────────────────────────── */
+.ps-wrapper {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 7vw;
+  background: transparent;
+}
+
+/* ── Left column — sticky heading ───────────────────────────────── */
+.ps-left {
+  flex: 0 0 38%;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 8%;
+}
+
+.ps-label {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(var(--c-label-rgb), 0.7);
+  margin-bottom: 28px;
+}
+
+.ps-heading {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(38px, 5vw, 70px);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--c-white);
+  margin-bottom: 20px;
+}
+
+.ps-subtext {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(13px, 1.2vw, 17px);
+  font-weight: 500;
+  color: rgba(var(--c-white-rgb), 0.32);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* ── Right column ────────────────────────────────────────────────── */
+.ps-right-clip {
+  flex: 1;
+}
+
+.ps-right {
+  /* 55 vh top: cards enter just below centre on first sticky frame.
+     120 vh bottom: section stays alive after the last card settles,
+     giving it extra screen time before the section ends.              */
+  padding: 55vh 0 120vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Card item — slides in from the left as --progress → 1 ─────── */
+.ps-item {
+  --progress: 0;
+  transform: translateX(calc((1 - var(--progress)) * 200px));
+  filter: blur(calc((1 - var(--progress)) * 18px));
+  opacity: calc(0.02 + var(--progress) * 0.98);
+  will-change: transform, filter, opacity;
+}
+
+/* ── Card ────────────────────────────────────────────────────────── */
+.ps-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 32px 36px;
+  border-radius: 14px;
+  background: var(--c-bg-card);
+  border: 1px solid rgba(var(--c-white-rgb), 0.07);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.ps-card:hover {
+  border-color: rgba(var(--c-accent-rgb), 0.22);
+  box-shadow:
+    0 4px 48px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(var(--c-accent-rgb), 0.08);
+}
+
+.ps-card-id {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: rgba(var(--c-accent-rgb), 0.4);
+  padding-top: 5px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.ps-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.ps-card-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 2vw, 26px);
+  letter-spacing: -0.02em;
+  color: var(--c-white);
+  line-height: 1.15;
+}
+
+.ps-card-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(13px, 1.2vw, 16px);
+  font-weight: 500;
+  color: rgba(var(--c-white-rgb), 0.42);
+  line-height: 1.65;
+}
+
+.ps-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(var(--c-accent-rgb), 0.6);
+  text-decoration: none;
+  margin-top: 6px;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.ps-card-link:hover {
+  color: var(--c-accent);
+  gap: 12px;
+}
+
+.ps-card-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.ps-card-link:hover .ps-card-arrow {
+  transform: translateX(3px);
+}

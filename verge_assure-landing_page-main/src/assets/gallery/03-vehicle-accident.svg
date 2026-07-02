@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 267">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1218"/>
+      <stop offset="100%" stop-color="#1e2838"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="267" fill="url(#bg)"/>
+  <!-- Road -->
+  <rect x="0" y="195" width="400" height="72" fill="#141820"/>
+  <rect x="0" y="228" width="400" height="2" fill="#2a3040" opacity="0.6"/>
+  <!-- Dashes -->
+  <rect x="30" y="227" width="40" height="3" fill="#3a4455" opacity="0.5"/>
+  <rect x="120" y="227" width="40" height="3" fill="#3a4455" opacity="0.5"/>
+  <rect x="210" y="227" width="40" height="3" fill="#3a4455" opacity="0.5"/>
+  <rect x="300" y="227" width="40" height="3" fill="#3a4455" opacity="0.5"/>
+  <!-- Car body -->
+  <rect x="80" y="148" width="240" height="50" rx="6" fill="#1a2030"/>
+  <!-- Car cabin -->
+  <path d="M120,148 Q130,112 160,110 L240,110 Q270,112 280,148Z" fill="#151c2a" stroke="#2a3548" stroke-width="1"/>
+  <!-- Windows -->
+  <path d="M130,146 Q137,118 155,116 L195,116 L195,146Z" fill="#0e1420" opacity="0.8"/>
+  <path d="M205,146 L205,116 L240,116 Q258,118 263,146Z" fill="#0e1420" opacity="0.8"/>
+  <!-- Wheels -->
+  <circle cx="140" cy="198" r="22" fill="#0c1018" stroke="#2a3040" stroke-width="3"/>
+  <circle cx="140" cy="198" r="10" fill="#1a2030"/>
+  <circle cx="260" cy="198" r="22" fill="#0c1018" stroke="#2a3040" stroke-width="3"/>
+  <circle cx="260" cy="198" r="10" fill="#1a2030"/>
+  <!-- Impact damage (left side crumple) -->
+  <path d="M80,148 L58,144 L52,158 L62,162 L55,170 L70,172 L68,183 L82,185 L80,198"
+        fill="none" stroke="#3a4a60" stroke-width="2" stroke-linecap="round"/>
+  <path d="M80,155 L65,150" stroke="#4a5a70" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M80,164 L62,162" stroke="#4a5a70" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Label -->
+  <rect y="240" width="400" height="27" fill="rgba(0,0,0,0.45)"/>
+  <text x="16" y="258" font-family="system-ui,sans-serif" font-size="10" font-weight="700" letter-spacing="2.5" fill="rgba(255,255,255,0.88)">VEHICLE ACCIDENT</text>
+  <text x="384" y="13" font-family="system-ui,sans-serif" font-size="9" text-anchor="end" fill="rgba(255,255,255,0.28)">replace with photo</text>
+</svg>

@@ -1,0 +1,42 @@
+/* ================================================================
+   THEME SYSTEM
+   To switch themes, change ACTIVE_THEME in src/themes.ts.
+   That sets data-theme on <html>, activating the matching block.
+   ================================================================ */
+
+/* ── Theme 1 : Sage Green ──────────────────────────────────────── */
+:root[data-theme="1"] {
+
+  /* Brand accent */
+  --c-accent:               #4ade80;
+  --c-accent-rgb:           74, 222, 128;
+  --c-accent-hover:         #86efac;
+  --c-accent-hover-rgb:     134, 239, 172;
+
+  /* Page backgrounds */
+  --c-bg-light:             #8c9f85;       /* light-mode canvas background */
+  --c-bg-light-rgb:         140, 159, 133;
+  --c-bg-dark:              #0d1a0d;       /* dark-mode canvas background */
+  --c-bg-dark-rgb:          13, 26, 13;
+  --c-bg-card:              #132013;       /* card surfaces in dark sections */
+
+  /* Text on light background */
+  --c-text-on-light:        #1c2318;
+  --c-text-on-light-rgb:    28, 35, 24;
+
+  /* Floating-word hover (noticeably deeper green) */
+  --c-text-floating-hover:  #0e4b25;
+
+  /* Navbar demo-button hover state (light mode) */
+  --c-nav-btn-hover:        #2d3a28;
+
+  /* Section label accent (muted sage green) */
+  --c-label-rgb:            120, 200, 130;
+
+  /* Pure white — used for text / fills in dark sections */
+  --c-white:                #ffffff;
+  --c-white-rgb:            255, 255, 255;
+
+  /* Canvas: cursor-glow tint in dark-mode page background */
+  --c-canvas-glow-dark-rgb: 160, 225, 160;
+}
