@@ -3,7 +3,7 @@ import './Navbar.css'
 import { RENDER_GALLERY } from '../../config'
 
 const NAV_ITEMS = [
-  { label: 'VALUE PROPOSITION', id: 'valueProposition' },
+  { label: 'VALUE PROPOSITION', id: 'services' },
   { label: 'PRODUCT',  id: 'products' },
   { label: 'ABOUT',    id: 'about' },
   { label: 'TEAM',     id: 'team' },
