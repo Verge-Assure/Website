@@ -53,7 +53,9 @@
 /* ── Right column ────────────────────────────────────────────────── */
 .ps-right-clip {
   flex: 1;
+  overflow: hidden;
 }
+
 
 .ps-right {
   /* 55 vh top: cards enter just below centre on first sticky frame.
