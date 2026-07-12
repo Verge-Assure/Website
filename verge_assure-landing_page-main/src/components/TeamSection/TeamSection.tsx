@@ -1,6 +1,6 @@
 import "./TeamSection.css";
 
-import { LINKEDIN_URLS } from "../../../linkedin.config";
+import { LINKEDIN_URLS } from "../../../config";
 
 interface TeamMember {
   name: string;

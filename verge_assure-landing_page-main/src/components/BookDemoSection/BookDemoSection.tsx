@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './BookDemoSection.css'
+import { FORM_URL } from '../../../config'
 
 export function BookDemoSection() {
   const [email, setEmail] = useState('')
@@ -10,7 +11,7 @@ export function BookDemoSection() {
     if (!email.trim() || loading) return
 
     setLoading(true)
-    fetch('https://formspree.io/f/mpqglbzp', {
+    fetch(FORM_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
