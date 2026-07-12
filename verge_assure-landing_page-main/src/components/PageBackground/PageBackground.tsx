@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import './PageBackground.css'
 import { canvasTheme } from '../../themes'
-import { RENDER_GALLERY } from '../../config'
 
 export function PageBackground({ forceDark = false }: { forceDark?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -87,12 +86,21 @@ export function PageBackground({ forceDark = false }: { forceDark?: boolean }) {
       if (forceDarkRef.current) {
         t = 1
       } else {
-        const vh = window.innerHeight
-        const scrollY = scrollYRef.current
-        const transStart = RENDER_GALLERY ? vh * 0.3 : vh * 1.7
-        const transEnd   = RENDER_GALLERY ? vh * 1.0 : vh * 2.4
-        t = (scrollY - transStart) / (transEnd - transStart)
-        t = Math.max(0, Math.min(1, t))
+        const servicesEl = document.getElementById('services')
+        if (servicesEl) {
+          const rect = servicesEl.getBoundingClientRect()
+          const start = window.innerHeight * 0.95
+          const end = window.innerHeight * 0.20
+          const progress = (start - rect.top) / (start - end)
+          t = Math.max(0, Math.min(1, progress))
+        } else {
+          const vh = window.innerHeight
+          const scrollY = scrollYRef.current
+          const transStart = vh * 1.2
+          const transEnd   = vh * 2.1
+          t = (scrollY - transStart) / (transEnd - transStart)
+          t = Math.max(0, Math.min(1, t))
+        }
       }
 
       // 3. Draw background color (interpolated between light and dark)

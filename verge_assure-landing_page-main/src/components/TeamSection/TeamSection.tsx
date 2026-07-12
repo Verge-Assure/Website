@@ -143,9 +143,9 @@ function MemberCard({
 // ──────────────────────────────────────────────────────────────────────
 // MAIN TEAM SECTION
 // ──────────────────────────────────────────────────────────────────────
-export function TeamSection() {
+export function TeamSection({ isHomeSection = false }: { isHomeSection?: boolean }) {
   return (
-    <div id="team" className="team-wrapper">
+    <div id="team" className={`team-wrapper ${isHomeSection ? 'team-wrapper--home' : ''}`}>
       {/* Decorative background grid and ambient glows */}
       <div className="team-bg-glow team-bg-glow--left" />
       <div className="team-bg-glow team-bg-glow--right" />
@@ -169,7 +169,7 @@ export function TeamSection() {
         </div>
 
         {/* Co-Founders Row (Top Row - 2 large cards) */}
-        <div className="team-founders-row">
+        <div className={`team-founders-row ${isHomeSection ? 'team-founders-row--stacked' : ''}`}>
           {CO_FOUNDERS.map((founder, i) => (
             <MemberCard key={i} member={founder} isLarge={true} />
           ))}
@@ -181,7 +181,7 @@ export function TeamSection() {
         </div>
 
         {/* Core Team Grid (Bottom Row - 5 standard cards) */}
-        <div className="team-members-row">
+        <div className={`team-members-row ${isHomeSection ? 'team-members-row--single-row' : ''}`}>
           {CORE_TEAM.map((member, i) => (
             <MemberCard key={i} member={member} isLarge={false} />
           ))}

@@ -158,3 +158,50 @@
 .ps-card-link:hover .ps-card-arrow {
   transform: translateX(3px);
 }
+
+/* ── Mobile Layout Override ────────────────────────────────── */
+@media (max-width: 900px) {
+  .ps-wrapper {
+    flex-direction: column;
+    height: auto;
+    padding: 100px 24px 60px;
+    align-items: center;
+  }
+
+  .ps-left {
+    position: relative;
+    top: auto;
+    height: auto;
+    width: 100%;
+    max-width: 500px;
+    padding-right: 0;
+    margin-bottom: 40px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .ps-right-clip {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .ps-right {
+    padding: 0;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 24px;
+  }
+
+  .ps-item {
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+
+  .ps-card {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+}
+

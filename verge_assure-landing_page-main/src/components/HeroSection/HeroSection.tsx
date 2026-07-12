@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import HeroTitleHover from './HeroTitleHover'
 import './HeroSection.css'
 import { canvasTheme } from '../../themes'
@@ -95,6 +95,19 @@ export function HeroSection() {
   const particles    = useRef<Particle[]>([])
   const rafRef       = useRef<number | undefined>(undefined)
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 768)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const activeWordsZones = WORDS_ZONES
+  const currentProximity = isMobile ? 120 : PROXIMITY
+
   // Shared between scroll handler and RAF loop — drives line retraction
   const lineProgRef = useRef(1)
 
@@ -144,7 +157,7 @@ export function HeroSection() {
     let initialized = false
 
     function initParticles(wordsEl: HTMLElement, W: number, H: number) {
-      particles.current = WORDS_ZONES.map(([text, zone], i) => {
+      particles.current = activeWordsZones.map(([text, zone], i) => {
         const [x, y]   = pickInZone(zone, W, H)
         const [tx, ty] = pickInZone(zone, W, H)
         const el = wordsEl.children[i] as HTMLElement ?? null
@@ -183,8 +196,8 @@ export function HeroSection() {
             if (j === i) return
             const dx = other.x - p.x, dy = other.y - p.y
             const dist = Math.sqrt(dx * dx + dy * dy)
-            if (dist < PROXIMITY && dist > 0) {
-              const f = REPEL_FORCE * (1 - dist / PROXIMITY)
+            if (dist < currentProximity && dist > 0) {
+              const f = REPEL_FORCE * (1 - dist / currentProximity)
               other.vx += (dx / dist) * f + (Math.random() - 0.5) * 0.6
               other.vy += (dy / dist) * f + (Math.random() - 0.5) * 0.6
             }
@@ -256,8 +269,8 @@ export function HeroSection() {
             if (j === i) return
             const dx = other.x - p.x, dy = other.y - p.y
             const dist = Math.sqrt(dx * dx + dy * dy)
-            if (dist < PROXIMITY) {
-              const alpha = (1 - dist / PROXIMITY) * 0.75 * lineT
+            if (dist < currentProximity) {
+              const alpha = (1 - dist / currentProximity) * 0.75 * lineT
               const [lr, lg, lb] = canvasTheme.heroLineRgb
               ctx.beginPath()
               ctx.strokeStyle = `rgba(${lr},${lg},${lb},${alpha.toFixed(3)})`
@@ -349,7 +362,7 @@ export function HeroSection() {
 
     rafRef.current = requestAnimationFrame(animate)
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
-  }, [])
+  }, [isMobile])
 
   return (
     <div ref={wrapperRef} className="hero-wrapper">
@@ -357,7 +370,7 @@ export function HeroSection() {
         <canvas ref={canvasRef} className="hero-canvas" />
 
         <div ref={wordsRef} className="words-layer">
-          {WORDS_ZONES.map(([word], i) => (
+          {activeWordsZones.map(([word], i) => (
             <span key={`${word}-${i}`} className="floating-word">{word}</span>
           ))}
         </div>

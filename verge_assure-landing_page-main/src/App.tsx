@@ -55,6 +55,7 @@ export function App() {
           <ServicesSection />
           <WhyVergeAssure />
           <ProductsSection />
+          <TeamSection isHomeSection={true} />
           <CtaSection />
         </>
       )}

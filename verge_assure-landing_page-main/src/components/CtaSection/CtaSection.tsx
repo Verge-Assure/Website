@@ -93,7 +93,7 @@ export function CtaSection() {
           </form>
 
           {/* System Status Badge */}
-          <div className="cta-status">
+          <div className="cta-system-status">
             <span className="cta-status-dot" />
             <span className="cta-status-text">SYSTEMS OPERATIONAL — VERGE ASSURE CLOUD v1.4</span>
           </div>

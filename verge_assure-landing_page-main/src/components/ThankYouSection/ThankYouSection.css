@@ -159,3 +159,13 @@
     padding: 60px 30px;
   }
 }
+
+@media (max-width: 500px) {
+  .thanks-card {
+    padding: 40px 20px;
+  }
+  .thanks-wrapper {
+    padding: 120px 0 40px;
+  }
+}
+

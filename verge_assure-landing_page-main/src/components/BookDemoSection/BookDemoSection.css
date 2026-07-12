@@ -324,3 +324,19 @@
     padding: 120px 0 60px;
   }
 }
+
+@media (max-width: 500px) {
+  .demo-card {
+    padding: 40px 20px;
+  }
+  .demo-heading {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+  .demo-form-heading {
+    font-size: clamp(20px, 6vw, 24px);
+  }
+  .demo-wrapper {
+    padding: 100px 0 40px;
+  }
+}
+

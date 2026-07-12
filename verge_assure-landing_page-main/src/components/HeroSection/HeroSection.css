@@ -65,7 +65,7 @@
 .title-line {
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-size: clamp(72px, 11.5vw, 160px);
+  font-size: clamp(42px, 11.5vw, 160px);
   color: var(--c-text-on-light);
   letter-spacing: -0.015em;
   line-height: 0.9;
@@ -104,8 +104,10 @@
 
 @media (max-width: 768px) {
   .hero-scroll {
-    right: 24px;
-    bottom: 30px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 24px;
   }
 }
 
