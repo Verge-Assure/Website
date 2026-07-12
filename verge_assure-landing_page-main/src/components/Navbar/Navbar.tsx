@@ -50,22 +50,9 @@ export default function Navbar({ currentPath = '/' }: { currentPath?: string }) 
   }, [currentPath, window.scrollY])
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: { label: string; id: string }) => {
-    if (item.id === 'team') {
-      e.preventDefault()
-      window.history.pushState(null, '', '/team')
-      window.dispatchEvent(new PopStateEvent('popstate'))
-    } else if (item.id === 'insight') {
-      e.preventDefault()
-      window.history.pushState(null, '', '/insight')
-      window.dispatchEvent(new PopStateEvent('popstate'))
-    } else {
-      if (currentPath !== '/') {
-        e.preventDefault()
-        window.history.pushState(null, '', `/#${item.id}`)
-        window.dispatchEvent(new PopStateEvent('popstate'))
-      }
-      // If path is '/', let default browser scrolling function
-    }
+    e.preventDefault()
+    window.history.pushState(null, '', `/${item.id}`)
+    window.dispatchEvent(new PopStateEvent('popstate'))
   }
 
   const navigateHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -90,12 +77,11 @@ export default function Navbar({ currentPath = '/' }: { currentPath?: string }) 
       {/* Center: navigation links */}
       <div className="nav-pill">
         {NAV_ITEMS.map(item => {
-          const isActive = (currentPath === '/team' && item.id === 'team') || 
-                           (currentPath === '/insight' && item.id === 'insight')
+          const isActive = currentPath === `/${item.id}`
           return (
             <a 
               key={item.label} 
-              href={item.id === 'team' ? '/team' : item.id === 'insight' ? '/insight' : `/#${item.id}`} 
+              href={`/${item.id}`} 
               onClick={(e) => handleNavClick(e, item)}
               className={`nav-item ${isActive ? 'nav-item--active' : ''}`}
             >
