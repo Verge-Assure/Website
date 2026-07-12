@@ -74,18 +74,38 @@
 /* ── Scroll hint ─────────────────────────────────────────────── */
 .hero-scroll {
   position: absolute;
-  bottom: 36px;
-  left: 0;
-  right: 0;
-  text-align: center;
+  bottom: 40px;
+  right: 60px;
   z-index: 30;
 }
 
 .scroll-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.24em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
   color: var(--c-text-on-light);
-  opacity: 0.65;
+  opacity: 0.6;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
+
+.scroll-label::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+  transform: translateY(-0.5px);
+}
+
+@media (max-width: 768px) {
+  .hero-scroll {
+    right: 24px;
+    bottom: 30px;
+  }
+}
+

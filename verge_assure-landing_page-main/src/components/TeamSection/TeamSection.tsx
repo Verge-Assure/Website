@@ -1,10 +1,13 @@
 import "./TeamSection.css";
 
+import { LINKEDIN_URLS } from "../../../linkedin.config";
+
 interface TeamMember {
   name: string;
   role: string;
   bio?: string;
   image?: string; // Photo URL/path - Place in /public/team/ or reference external URLs
+  linkedin?: string;
 }
 
 // ──────────────────────────────────────────────────────────────────────
@@ -16,12 +19,14 @@ const CO_FOUNDERS: TeamMember[] = [
     role: "Founder & Business Head",
     bio: "Leads business growth with a problem-first understanding of insurance workflows, partnerships, and client delivery.",
     image: "/team/yash_chandra.webp",
+    linkedin: LINKEDIN_URLS.yashChandra,
   },
   {
     name: "Ansh Srivastava",
     role: "Co-Founder & Technology Head",
     bio: "Architects the technology vision behind Verge Assure, translating complex insurance operations into scalable digital platforms.",
     image: "/team/ansh_srivastava.webp",
+    linkedin: LINKEDIN_URLS.anshSrivastava,
   },
 ];
 
@@ -41,11 +46,13 @@ const CORE_TEAM: TeamMember[] = [
     name: "Ayush Srivastava",
     role: "Advisory Board",
     image: "/team/ayush_srivastava.webp",
+    linkedin: LINKEDIN_URLS.ayushSrivastava,
   },
   {
     name: "Vaibhav Chandra",
     role: "Advisory Board",
     image: "/team/vaibhav_chandra.webp",
+    linkedin: LINKEDIN_URLS.vaibhavChandra,
   },
 ];
 
@@ -82,7 +89,9 @@ function MemberCard({
                 src={member.image}
                 alt={member.name}
                 className={`team-photo ${
-                  member.name === "Vaibhav Chandra" ? "team-photo-vaibhav" : ""
+                  member.name === "Vaibhav Chandra" ? "team-photo-vaibhav" :
+                  member.name === "Yash Chandra" ? "team-photo-yash" :
+                  member.name === "Ayush Srivastava" ? "team-photo-ayush" : ""
                 }`}
               />
             </div>
@@ -98,11 +107,31 @@ function MemberCard({
 
         {/* Info & Details Section */}
         <div className="team-info">
-          <div className="team-meta">
-            <h3 className="team-name">{member.name}</h3>
-            <span className={isLarge ? "founder-role" : "team-role"}>
-              {member.role}
-            </span>
+          <div className="team-meta-row">
+            <div className="team-meta-left">
+              <h3 className="team-name">{member.name}</h3>
+              <span className={isLarge ? "founder-role" : "team-role"}>
+                {member.role}
+              </span>
+            </div>
+            {member.linkedin && (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={isLarge ? "team-linkedin-icon-link-large" : "team-linkedin-icon-link-small"}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width={isLarge ? "30" : "18"}
+                  height={isLarge ? "30" : "18"}
+                  fill="currentColor"
+                  className="team-linkedin-svg"
+                >
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+            )}
           </div>
           {member.bio && <p className="team-bio">{member.bio}</p>}
         </div>
