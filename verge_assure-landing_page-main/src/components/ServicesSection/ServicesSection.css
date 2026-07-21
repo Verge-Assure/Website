@@ -281,3 +281,34 @@
   color: rgba(var(--c-white-rgb), 0.55);
   margin: 0;
 }
+
+/* ── Mobile Accordion Styles ────────────────────────────────── */
+.svc-mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .svc-wrapper {
+    height: auto;
+  }
+  
+  .svc-sticky {
+    position: relative;
+    height: auto;
+    padding: 100px 24px 60px;
+    overflow: visible;
+  }
+
+  .svc-heading {
+    padding-top: 0;
+    margin-bottom: 40px;
+  }
+
+  .svc-timeline {
+    padding-bottom: 0;
+  }
+}
+

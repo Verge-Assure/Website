@@ -8,12 +8,16 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 html,
 body {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
   background-color: transparent; /* fixed .page-bg handles all background */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,4 +28,7 @@ body {
 #root {
   width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
+

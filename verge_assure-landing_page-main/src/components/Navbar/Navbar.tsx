@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import './Navbar.css'
-import { RENDER_GALLERY } from '../../config'
 
 const NAV_ITEMS = [
   { label: 'VALUE PROPOSITION', id: 'services' },
@@ -28,16 +27,21 @@ function VCALogo() {
 
 export default function Navbar({ currentPath = '/' }: { currentPath?: string }) {
   const [isDark, setIsDark] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     function onScroll() {
-      const vh = window.innerHeight
-      const transStart = RENDER_GALLERY ? vh * 2.1 : vh * 1.2
-      const transEnd   = RENDER_GALLERY ? vh * 3.6 : vh * 2.1
-
-      let t = (window.scrollY - transStart) / (transEnd - transStart)
-      t = Math.max(0, Math.min(1, t))
-      setIsDark(t >= 0.5)
+      const servicesEl = document.getElementById('services')
+      if (servicesEl) {
+        const rect = servicesEl.getBoundingClientRect()
+        const start = window.innerHeight * 0.95
+        const end = window.innerHeight * 0.20
+        const progress = (start - rect.top) / (start - end)
+        const t = Math.max(0, Math.min(1, progress))
+        setIsDark(t >= 0.5)
+      } else {
+        setIsDark(false)
+      }
     }
 
     if (currentPath === '/') {
@@ -47,25 +51,24 @@ export default function Navbar({ currentPath = '/' }: { currentPath?: string }) 
     } else {
       setIsDark(true) // Always opaque/dark styling on subpages for maximum legibility
     }
-  }, [currentPath, window.scrollY])
+  }, [currentPath])
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isMenuOpen])
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: { label: string; id: string }) => {
-    if (item.id === 'team') {
-      e.preventDefault()
-      window.history.pushState(null, '', '/team')
-      window.dispatchEvent(new PopStateEvent('popstate'))
-    } else if (item.id === 'insight') {
-      e.preventDefault()
-      window.history.pushState(null, '', '/insight')
-      window.dispatchEvent(new PopStateEvent('popstate'))
-    } else {
-      if (currentPath !== '/') {
-        e.preventDefault()
-        window.history.pushState(null, '', `/#${item.id}`)
-        window.dispatchEvent(new PopStateEvent('popstate'))
-      }
-      // If path is '/', let default browser scrolling function
-    }
+    e.preventDefault()
+    window.history.pushState(null, '', `/${item.id}`)
+    window.dispatchEvent(new PopStateEvent('popstate'))
   }
 
   const navigateHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -80,22 +83,21 @@ export default function Navbar({ currentPath = '/' }: { currentPath?: string }) 
   }
 
   return (
-    <nav className={`hero-nav${isDark ? ' nav--dark' : ''}`}>
+    <nav className={`hero-nav${isDark ? ' nav--dark' : ''}${isMenuOpen ? ' nav--menu-open' : ''}`}>
       {/* Left: logo + brand name */}
       <a href="/" onClick={navigateHome} className="nav-brand" style={{ textDecoration: 'none' }}>
         <VCALogo />
-        <span className="nav-brand-name">VERGE ASSURE TECHNOLOGY</span>
+        <span className="nav-brand-name">VERGE ASSURE</span>
       </a>
 
       {/* Center: navigation links */}
       <div className="nav-pill">
         {NAV_ITEMS.map(item => {
-          const isActive = (currentPath === '/team' && item.id === 'team') || 
-                           (currentPath === '/insight' && item.id === 'insight')
+          const isActive = currentPath === `/${item.id}`
           return (
             <a 
               key={item.label} 
-              href={item.id === 'team' ? '/team' : item.id === 'insight' ? '/insight' : `/#${item.id}`} 
+              href={`/${item.id}`} 
               onClick={(e) => handleNavClick(e, item)}
               className={`nav-item ${isActive ? 'nav-item--active' : ''}`}
             >
@@ -112,6 +114,48 @@ export default function Navbar({ currentPath = '/' }: { currentPath?: string }) 
       >
         Book a Demo
       </button>
+
+      {/* Hamburger button */}
+      <button 
+        className={`nav-hamburger${isMenuOpen ? ' is-active' : ''}`}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        <span className="hamburger-line" />
+        <span className="hamburger-line" />
+        <span className="hamburger-line" />
+      </button>
+
+      {/* Mobile Drawer Overlay */}
+      <div className={`nav-drawer${isMenuOpen ? ' is-open' : ''}`}>
+        <div className="nav-drawer-links">
+          {NAV_ITEMS.map(item => {
+            const isActive = currentPath === `/${item.id}`
+            return (
+              <a 
+                key={item.label} 
+                href={`/${item.id}`} 
+                onClick={(e) => {
+                  handleNavClick(e, item)
+                  setIsMenuOpen(false)
+                }}
+                className={`nav-drawer-item ${isActive ? 'nav-drawer-item--active' : ''}`}
+              >
+                {item.label}
+              </a>
+            )
+          })}
+          <button 
+            className="nav-drawer-demo-btn" 
+            onClick={() => {
+              navigateToDemo()
+              setIsMenuOpen(false)
+            }}
+          >
+            Book a Demo
+          </button>
+        </div>
+      </div>
     </nav>
   )
 }

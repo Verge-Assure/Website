@@ -20,15 +20,24 @@ const STEPS = [
   },
 ]
 
-
-
 // ── Main Section ────────────────────────────────────────────────────
 export function WhyVergeAssure() {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const labelRef = useRef<HTMLSpanElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
   useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 900)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) return
+
     function measure() {
       const label = labelRef.current
       const wrapper = wrapperRef.current
@@ -90,9 +99,11 @@ export function WhyVergeAssure() {
       window.removeEventListener('resize', measure)
       clearTimeout(timer)
     }
-  }, [])
+  }, [isMobile])
 
   useEffect(() => {
+    if (isMobile) return
+
     function onScroll() {
       const wrapper = wrapperRef.current
       if (!wrapper) return
@@ -118,38 +129,17 @@ export function WhyVergeAssure() {
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [isMobile])
 
   return (
-    <div id="about" ref={wrapperRef} className="wva-wrapper">
+    <div id="about" ref={wrapperRef} className={`wva-wrapper ${isMobile ? 'wva-wrapper--mobile' : ''}`}>
       <div className="wva-sticky">
-
-        {/* ── Left: label + titles ── */}
-        <div className="wva-left">
-          <span ref={labelRef} className="wva-section-label wva-section-label--centered">WHY VERGE ASSURE</span>
-          <div className="wva-titles">
-            {STEPS.map((step, i) => {
-              const state = i < activeIndex ? 'past' : i === activeIndex ? 'active' : 'future'
-              return (
-                <div key={i} className={`wva-title wva-title--${state}`}>
-                  {step.titles.map((line, j) => <span key={j}>{line}</span>)}
-                </div>
-              )
-            })}
-          </div>
-        </div>
-
-        {/* ── Center: Dynamic Content Card ── */}
-        <div className="wva-center">
-          <div className="wva-card-box">
-            {/* Ambient Background Glow inside the card container */}
-            <div className="wva-card-glow" />
-            <div className="wva-card-grid-overlay" />
-            
-            {STEPS.map((step, i) => {
-              const state = i < activeIndex ? 'past' : i === activeIndex ? 'active' : 'future'
-              return (
-                <div key={i} className={`wva-card-slide wva-card-slide--${state}`}>
+        {isMobile ? (
+          <div className="wva-mobile-container">
+            <span className="wva-section-label">WHY VERGE ASSURE</span>
+            <div className="wva-mobile-cards">
+              {STEPS.map((step, i) => (
+                <div key={i} className="wva-mobile-card">
                   <h3 className="wva-card-title">
                     {step.titles.map((t, idx) => (
                       <span key={idx} className="wva-title-line">{t}</span>
@@ -159,15 +149,57 @@ export function WhyVergeAssure() {
                     {step.subtitle}
                   </p>
                 </div>
-              )
-            })}
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <>
+            {/* ── Left: label + titles ── */}
+            <div className="wva-left">
+              <span ref={labelRef} className="wva-section-label wva-section-label--centered">WHY VERGE ASSURE</span>
+              <div className="wva-titles">
+                {STEPS.map((step, i) => {
+                  const state = i < activeIndex ? 'past' : i === activeIndex ? 'active' : 'future'
+                  return (
+                    <div key={i} className={`wva-title wva-title--${state}`}>
+                      {step.titles.map((line, j) => <span key={j}>{line}</span>)}
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
 
-        {/* ── Right spacer to keep center column centered ── */}
-        <div className="wva-right" />
+            {/* ── Center: Dynamic Content Card ── */}
+            <div className="wva-center">
+              <div className="wva-card-box">
+                {/* Ambient Background Glow inside the card container */}
+                <div className="wva-card-glow" />
+                <div className="wva-card-grid-overlay" />
+                
+                {STEPS.map((step, i) => {
+                  const state = i < activeIndex ? 'past' : i === activeIndex ? 'active' : 'future'
+                  return (
+                    <div key={i} className={`wva-card-slide wva-card-slide--${state}`}>
+                      <h3 className="wva-card-title">
+                        {step.titles.map((t, idx) => (
+                          <span key={idx} className="wva-title-line">{t}</span>
+                        ))}
+                      </h3>
+                      <p className="wva-card-desc">
+                        {step.subtitle}
+                      </p>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
 
+            {/* ── Right spacer to keep center column centered ── */}
+            <div className="wva-right" />
+          </>
+        )}
       </div>
     </div>
   )
 }
+export default WhyVergeAssure

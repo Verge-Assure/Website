@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './ProductsSection.css'
 
 const PRODUCTS = [
@@ -21,8 +21,25 @@ const PRODUCTS = [
 
 export function ProductsSection() {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
   useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 900)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) {
+      itemRefs.current.forEach((el) => {
+        if (!el) return
+        el.style.removeProperty('--progress')
+      })
+      return
+    }
+
     function onScroll() {
       const vh = window.innerHeight
       itemRefs.current.forEach((el) => {
@@ -38,7 +55,7 @@ export function ProductsSection() {
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [isMobile])
 
   return (
     <section id="products" className="ps-wrapper">

@@ -11,6 +11,7 @@ import { TeamSection }     from './components/TeamSection/TeamSection'
 import { InsightSection }  from './components/InsightSection/InsightSection'
 import { BookDemoSection } from './components/BookDemoSection/BookDemoSection'
 import { CtaSection }      from './components/CtaSection/CtaSection'
+import { ThankYouSection } from './components/ThankYouSection/ThankYouSection'
 import { RENDER_GALLERY }  from './config'
 
 export function App() {
@@ -39,7 +40,7 @@ export function App() {
     }
   }, [currentPath])
 
-  const isDarkPage = currentPath === '/team' || currentPath === '/insight' || currentPath === '/book-demo'
+  const isDarkPage = currentPath !== '/'
 
   return (
     <>
@@ -47,23 +48,26 @@ export function App() {
       <ScrollSnap />
       <Navbar currentPath={currentPath} />
 
-      {currentPath === '/team' ? (
-        <TeamSection />
-      ) : currentPath === '/insight' ? (
-        <InsightSection />
-      ) : currentPath === '/book-demo' ? (
-        <BookDemoSection />
-      ) : (
+      {currentPath === '/' && (
         <>
           <HeroSection />
           {RENDER_GALLERY && <ParallaxGallery />}
           <ServicesSection />
           <WhyVergeAssure />
           <ProductsSection />
+          <TeamSection isHomeSection={true} />
+          <CtaSection />
         </>
       )}
 
-      {currentPath !== '/book-demo' && <CtaSection />}
+      {currentPath === '/services' && <ServicesSection />}
+      {currentPath === '/products' && <ProductsSection />}
+      {currentPath === '/about' && <WhyVergeAssure />}
+      {currentPath === '/team' && <TeamSection />}
+      {currentPath === '/contact' && <CtaSection />}
+      {currentPath === '/book-demo' && <BookDemoSection />}
+      {currentPath === '/thank-you' && <ThankYouSection />}
+      {currentPath === '/insight' && <InsightSection />}
     </>
   )
 }

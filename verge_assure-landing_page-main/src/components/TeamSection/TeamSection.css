@@ -202,14 +202,14 @@
 .team-photo-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3; /* Portrait-tending landscape crop */
+  aspect-ratio: 1 / 1; /* Square crop to keep portrait faces visible */
   overflow: hidden;
   border-bottom: 1px solid rgba(var(--c-white-rgb), 0.06);
   background: rgba(var(--c-white-rgb), 0.008);
 }
 
 .team-card--large .team-photo-container {
-  aspect-ratio: 16 / 10; /* Wider aspect ratio for CEO/CTO cards */
+  aspect-ratio: 1.15 / 1; /* Slightly wider crop for founders, but tall enough to prevent head cutoff */
 }
 
 /* Technical wireframe overlay grid */
@@ -237,7 +237,14 @@
 
 .team-photo-vaibhav {
   object-position: center 15%;
-  
+}
+
+.team-photo-yash {
+  object-position: center 15%;
+}
+
+.team-photo-ayush {
+  object-position: center 15%;
 }
 
 /* Photo Placeholder Graphic */
@@ -291,20 +298,50 @@
   transition: color 0.4s ease;
 }
 
+.team-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 18px;
+  gap: 16px;
+}
+
+.team-meta-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.team-linkedin-icon-link-large,
+.team-linkedin-icon-link-small {
+  color: rgba(var(--c-white-rgb), 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.team-linkedin-icon-link-large:hover,
+.team-linkedin-icon-link-small:hover {
+  color: var(--c-accent);
+  transform: translateY(-1px);
+}
+
 .founder-role {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  justify-self:center;
-  align-items: center;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--c-accent);
 }
-.team-role{
-   display: block;
-  width: 100%;
-  text-align: center;
+
+.team-role {
+  display: block;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
@@ -330,6 +367,7 @@
   gap: 20px;
   border-top: 1px solid rgba(var(--c-white-rgb), 0.05);
   padding-top: 20px;
+  margin-top: auto;
 }
 
 .team-social-link {
@@ -390,11 +428,12 @@
 /* ── Responsive Adaptation ─────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .team-members-row {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px;
   }
   .team-card--large {
-    max-width: 50%;
+    max-width: calc(50% - 20px);
   }
 }
 
@@ -415,7 +454,53 @@
 
 @media (max-width: 580px) {
   .team-members-row {
+    display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
   }
 }
+
+/* ── Homepage Section Custom Layout ────────────────────────── */
+.team-founders-row.team-founders-row--stacked {
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.team-founders-row--stacked .team-card--large {
+  max-width: 520px;
+  width: 100%;
+}
+
+.team-members-row.team-members-row--single-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.team-members-row--single-row .team-card {
+  flex: 1;
+  max-width: 340px;
+}
+
+@media (max-width: 768px) {
+  .team-members-row.team-members-row--single-row {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex; /* Override display grid if any */
+  }
+
+  .team-members-row--single-row .team-card {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+

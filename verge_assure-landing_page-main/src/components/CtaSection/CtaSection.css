@@ -421,3 +421,20 @@
     gap: 16px;
   }
 }
+
+@media (max-width: 500px) {
+  .cta-container {
+    padding: 40px 20px;
+    width: 95%;
+  }
+  .cta-heading {
+    font-size: clamp(32px, 8vw, 44px);
+  }
+  .cta-form-heading {
+    font-size: clamp(20px, 6vw, 24px);
+  }
+  .cta-wrapper {
+    padding: 100px 0 40px;
+  }
+}
+

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './CtaSection.css'
+import { FORM_URL } from '../../../config'
 
 export function CtaSection() {
   const [email, setEmail] = useState('')
@@ -10,7 +11,7 @@ export function CtaSection() {
     if (!email.trim() || loading) return
 
     setLoading(true)
-    fetch('https://formspree.io/f/mpqglbzp', {
+    fetch(FORM_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -92,7 +93,7 @@ export function CtaSection() {
           </form>
 
           {/* System Status Badge */}
-          <div className="cta-status">
+          <div className="cta-system-status">
             <span className="cta-status-dot" />
             <span className="cta-status-text">SYSTEMS OPERATIONAL — VERGE ASSURE CLOUD v1.4</span>
           </div>

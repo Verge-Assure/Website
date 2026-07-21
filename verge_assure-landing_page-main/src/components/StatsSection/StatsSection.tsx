@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './StatsSection.css'
 
 const STATS = [
@@ -22,8 +22,26 @@ const STATS = [
 
 export function StatsSection() {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
   useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 900)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) {
+      itemRefs.current.forEach((el) => {
+        if (!el) return
+        el.style.removeProperty('--progress')
+        el.style.removeProperty('--progress-half')
+      })
+      return
+    }
+
     function onScroll() {
       const vh = window.innerHeight
       itemRefs.current.forEach((el) => {
@@ -41,7 +59,7 @@ export function StatsSection() {
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [isMobile])
 
   return (
     <section className="ss-wrapper">
