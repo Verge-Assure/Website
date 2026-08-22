@@ -5,7 +5,7 @@ const NAV_ITEMS = [
   { label: 'VALUE PROPOSITION', id: 'services' },
   { label: 'PRODUCT',  id: 'products' },
   { label: 'ABOUT',    id: 'about' },
-  { label: 'TEAM',     id: 'team' },
+  // { label: 'TEAM',     id: 'team' },
   // { label: 'INSIGHT',  id: 'insight' },
   { label: 'CONTACT',  id: 'contact' },
 ]
