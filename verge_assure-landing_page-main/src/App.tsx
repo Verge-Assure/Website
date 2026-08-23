@@ -63,7 +63,7 @@ export function App() {
       {currentPath === '/services' && <ServicesSection />}
       {currentPath === '/products' && <ProductsSection />}
       {currentPath === '/about' && <WhyVergeAssure />}
-      {/* {currentPath === '/team' && <TeamSection />} */}
+      {/* {currentPath === '/team' && <TeamSection />}. */}
       {currentPath === '/contact' && <CtaSection />}
       {currentPath === '/book-demo' && <BookDemoSection />}
       {currentPath === '/thank-you' && <ThankYouSection />}
